@@ -35,7 +35,7 @@ class UsersControllerTest < ActionController::TestCase
     patch :update, id: @other_user, user: { password: "hogehoge",
                           password_confirmation: "hogehoge",
                           admin: true }
-    assert_not @other_user.admin?
+    assert_not @other_user.reload.admin?
   end
 
   test "should redirect edit when logged in as wrong user" do
