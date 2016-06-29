@@ -71,7 +71,7 @@ Rails.application.configure do
     :port => '587',
     :authentication => :plain,
     :user_name => ENV['LOLIPOP_USERNAME'],
-    :password => ENV['LOLIPOP_USERNAME'],
+    :password => ENV['LOLIPOP_PASSWORD'],
     :domein => 'asuforce.xyz',
     :enable_starttls_auto => true
   }
