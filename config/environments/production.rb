@@ -66,7 +66,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'asuforcerails.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
-  ActonMailer:;Base.smtp_settings = {
+  ActionMailer::Base.smtp_settings = {
     :address => 'smtp.lolipop.jp',
     :port => '587',
     :authentication => :plain,
