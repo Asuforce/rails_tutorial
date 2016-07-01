@@ -4,7 +4,7 @@ if Rails.env.production?
       access_key_id: ENV['BAYT_KEY'],
       secret_access_key: ENV['BAYT_SECRET'],
       region: 'us-east-1',
-      endpoint: ENV['BAYT_ASSET_URL']
+      endpoint: ENV['BAYT_URL']
     }
 
     config.asset_host = ENV['BAYT_ASSET_URL']
