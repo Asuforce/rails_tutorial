@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'help' =>  'static_pages#help'
   get 'about' =>  'static_pages#about'
   get 'contact' =>  'static_pages#contact'
+  get 'purchase' => 'static_pages#purchase'
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :purchases, only: [:create]
 end
