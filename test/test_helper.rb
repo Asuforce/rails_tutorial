@@ -30,7 +30,7 @@ class ActiveSupport::TestCase
 
   private
 
-  def integration_test?
-    defined?(post_via_redirect)
-  end
+    def integration_test?
+      defined?(post_via_redirect)
+    end
 end
