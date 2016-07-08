@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  namespace :api, { format: 'json' } do
+    get 'login' => 'sessions#new'
+    post 'login' => 'sessions#create'
+    delete 'logout' => 'sessions#destroy'
+  end
+
   resources :users do
     member do
       get :following, :followers
