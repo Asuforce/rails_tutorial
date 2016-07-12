@@ -1,6 +1,6 @@
-class Api::UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
+class Api::UsersController < Api::ApplicationController
+  before_action :logged_in_user, only: [:index, :update, :destroy, :following, :followers]
+  before_action :correct_user, only: :update
   before_action :admin_user, only: :destroy
 
   def index
@@ -13,27 +13,27 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      @user.send_activation_email
-      render json { head :no_content, status: :ok }
+    user = User.new(user_params)
+    if user.save
+      user.send_activation_email
+      render json: user, status: :created
     else
-      render json: @user.errors
+      render json: user.errors.messages, status: :unprocessable_entity
     end
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      render json { head :no_content, status: :ok }
+      render json: @user, status: :ok
     else
-      render json: @user.errors, status: :unprocessable_entry
+      render json: @user.errors.messages, status: :unprocessable_entity
     end
   end
 
   def destroy
     User.find(params[:id]).destroy
-    render json { head :no_content, status: :ok }
+    render nothing: :true, status: :ok
   end
 
   def following
@@ -58,10 +58,10 @@ class Api::UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      render nothing: :true, status: :bad_request unless current_user?(@user)
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.admin?
+      render nothing: :true, status: :bad_request unless current_user.admin?
     end
 end
