@@ -12,7 +12,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     assert_response :bad_request
   end
 
-  test "should get index succress responce and correct date" do
+  test "should get index succress responce and correct json response" do
     log_in_as(@user)
     get :index, format: :json
     assert_response :success
@@ -31,7 +31,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     end
   end
 
-  test "should get show success responce" do
+  test "should get show success responce and correct json response" do
     log_in_as(@user)
     get :show, id: @user, format: :json
     assert_response :success
@@ -80,7 +80,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     assert_equal 1, ActionMailer::Base.deliveries.size
   end
 
-  test "should fail update" do
+  test "invalid user update" do
     log_in_as(@user)
     patch :update, id: @user, format: :json,
       user: {
@@ -92,7 +92,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
-  test "should success update" do
+  test "valid user update" do
     log_in_as(@user)
     name = "Foo Bar"
     email = "foo@bar.com"
