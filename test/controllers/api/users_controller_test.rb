@@ -9,7 +9,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "should not get index" do
     get :index, format: :json
-    assert_response :bad_request
+    assert_response :unauthorized
   end
 
   test "should get index succress responce and correct json response" do
@@ -113,7 +113,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     assert_no_difference "User.count" do
       delete :destroy, id: @user, format: :json
     end
-    assert_response :bad_request
+    assert_response :unauthorized
   end
 
   test "should fail destroy when logged in as a non-admin" do
@@ -134,7 +134,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "should not get following success responce" do
     get :following, id: @user, format: :json
-    assert_response :bad_request
+    assert_response :unauthorized
   end
 
   test "should get following success responce" do
@@ -162,7 +162,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "should not get followers success responce" do
     get :followers, id: @user, format: :json
-    assert_response :bad_request
+    assert_response :unauthorized
   end
 
   test "should get followers success responce" do
