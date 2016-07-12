@@ -7,6 +7,7 @@ Minitest::Reporters.use!
 class ActiveSupport::TestCase
   fixtures :all
   include ApplicationHelper
+  include UsersHelper
 
   def setup
     @base_title = "Ruby on Rails Tutorial Sample App"
