@@ -8,7 +8,7 @@ class Api::ApplicationController < ActionController::Base
     def logged_in_user
       unless logged_in?
         store_location
-        render nothing: :true, status: :bad_request
+        render nothing: :true, status: :unauthorized
       end
     end
 end
