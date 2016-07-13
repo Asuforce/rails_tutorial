@@ -32,7 +32,7 @@ class Api::UsersController < Api::ApplicationController
   end
 
   def destroy
-    User.find_by(params[:id]).try(:destroy)
+    User.find_by(id: params[:id]).try(:destroy)
     render nothing: :true, status: :ok
   end
 
