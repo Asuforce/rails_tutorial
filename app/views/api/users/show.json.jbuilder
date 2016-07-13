@@ -4,9 +4,7 @@ json.user do
 end
 
 json.feeds do |json|
-  json.microposts do
-    json.array!(@microposts) do |micropost|
-      json.extract! micropost, :id, :content, :user_id
-    end
+  json.array!(@microposts) do |micropost|
+    json.extract! micropost, :id, :content, :user_id
   end
 end

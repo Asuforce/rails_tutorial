@@ -33,17 +33,15 @@ class Api::UsersControllerTest < ActionController::TestCase
     get :show, id: @user, format: :json
     assert_response :success
 
-    microposts = @user.microposts.paginate(page: 1)
+    feeds = @user.microposts.paginate(page: 1)
 
     pattern = {
       user: {
         id: @user.id, name: @user.name
       },
-      feeds: {
-        microposts: microposts.map {|micropost| {
-          id: micropost[:id], content: micropost[:content], user_id: micropost[:user_id]
-        }}.ordered!
-      }
+      feeds: feeds.map {|feed| {
+        id: feed[:id], content: feed[:content], user_id: feed[:user_id]
+      }}.ordered!
     }
     assert_json_match pattern, response.body
   end
@@ -138,17 +136,15 @@ class Api::UsersControllerTest < ActionController::TestCase
     get :following, id: @user, format: :json
     assert_response :ok
 
-    users = @user.following.paginate(page: 1)
+    followings = @user.following.paginate(page: 1)
 
     pattern = {
       user: {
         id: @user.id, name: @user.name
       }.ignore_extra_keys!,
-      following: {
-        users: users.map {|user| {
-          id: user[:id], name: user[:name], img: gravatar_url(user, size: 50)
-        }}.ordered!
-      }
+      following: followings.map {|following| {
+        id: following[:id], name: following[:name], img: gravatar_url(following, size: 50)
+      }}.ordered!
     }
     assert_json_match pattern, response.body
   end
@@ -163,17 +159,15 @@ class Api::UsersControllerTest < ActionController::TestCase
     get :followers, id: @user, format: :json
     assert_response :ok
 
-    users = @user.followers.paginate(page: 1)
+    followers = @user.followers.paginate(page: 1)
 
     pattern = {
       user: {
         id: @user.id, name: @user.name
       }.ignore_extra_keys!,
-      followers: {
-        users: users.map {|user| {
-          id: user[:id], name: user[:name], img: gravatar_url(user, size: 50)
-        }}.ordered!
-      }
+      followers: followers.map {|follower| {
+        id: follower[:id], name: follower[:name], img: gravatar_url(follower, size: 50)
+      }}.ordered!
     }
     assert_json_match pattern, response.body
   end
