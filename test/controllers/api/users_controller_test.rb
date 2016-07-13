@@ -3,6 +3,7 @@ require 'test_helper'
 class Api::UsersControllerTest < ActionController::TestCase
 
   def setup
+    ActionMailer::Base.deliveries.clear
     @user = users(:michael)
     @other_user = users(:archer)
   end
