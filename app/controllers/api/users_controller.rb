@@ -1,6 +1,5 @@
 class Api::UsersController < Api::ApplicationController
-#  before_action :doorkeeper_authorize!, only: [:index, :update, :destroy, :following, :followers]
-  before_action :logged_in_user, only: [:index, :update, :destroy, :following, :followers]
+  before_action :auth_user, only: [:index, :update, :destroy, :following, :followers]
   before_action :correct_user, only: :update
   before_action :admin_user, only: :destroy
 
@@ -64,5 +63,11 @@ class Api::UsersController < Api::ApplicationController
 
     def admin_user
       render nothing: :true, status: :bad_request unless current_user.admin?
+    end
+
+    def auth_user
+      auth_key = request.authorization
+      token = auth_key.split("  ").last
+      decode_token = User.decode_jwt(token)
     end
 end
