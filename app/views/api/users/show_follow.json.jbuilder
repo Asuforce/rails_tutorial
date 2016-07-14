@@ -1,7 +1,5 @@
 json.user do
-  json.id @user.id
-  json.name @user.name
-  json.admin @user.admin
+  json.extract! @user, :id, :name, :admin
 end
 
 json.set! @title.downcase do

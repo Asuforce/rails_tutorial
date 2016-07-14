@@ -1,6 +1,5 @@
 json.user do
-  json.id @user.id
-  json.name @user.name
+  json.extract! @user, :id, :name
 end
 
 json.feeds do |json|
