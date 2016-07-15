@@ -32,6 +32,7 @@ group :test do
   gem 'mini_backtrace', '0.1.3'
   gem 'guard-minitest', '2.3.1'
   gem 'json_expressions', '0.8.3'
+  gem 'timecop', '0.8.0'
 end
 
 group :production do
