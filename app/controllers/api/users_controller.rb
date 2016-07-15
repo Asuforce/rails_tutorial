@@ -66,17 +66,18 @@ class Api::UsersController < Api::ApplicationController
     end
 
     def auth_user
-      auth_key = request.authorization
-      token = auth_key.split("  ").last
-      decode_token = decode_jwt(token)
-    end
-
-    def decode_jwt(token)
+      token = headers.authorization
+      token = token.split(" ").last
       key = Rails.application.secrets[:secret_key_base]
+
       begin
         JWT.decode token, key, 'HS256'
       rescue JWT::ExpiredSignature
         return false
+      rescue JWT::InvalidIssuerError
+        return false
       end
+    else
+      return false
     end
 end

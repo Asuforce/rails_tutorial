@@ -77,6 +77,15 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+
+  def create_jwt
+    exp = Time.now.to_i + 2 * 3600
+    iss = 'asuforcerails.herokuapp.com'
+    payload = {id: id, exp: exp, iss: iss}
+    key = Rails.application.secrets[:secret_key_base]
+    JWT.encode payload, key, 'HS256'
+  end
+
   private
 
     def downcase_email
