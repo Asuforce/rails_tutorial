@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: Rails_development
+  database: skyline_development
 
 test:
   <<: *default
-  database: Rails_test
+  database: skyline_test
 
 production:
   <<: *default
-  database: Rails_production
+  database: skyline_production
