@@ -4,16 +4,18 @@ default: &default
   pool: 5
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: skyline_development
+  socket: /tmp/mysql.sock
 
 test:
   <<: *default
   database: skyline_test
+  socket: /tmp/mysql.sock
 
 production:
   <<: *default
   database: skyline_production
+  socket: /var/run/mysqld/mysqld.sock
