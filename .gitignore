@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -22,6 +23,8 @@
 
 # Ignore uploaded test images.
 /public/uploads/
+/public/assets/
 
 # Ignore Env file.
 .env
+
