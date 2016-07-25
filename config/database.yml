@@ -6,9 +6,10 @@ default: &default
   password: <%= ENV['DB_PASSWORD'] %>
 
 development:
-  <<: *default
-  database: skyline_development
-  socket: /tmp/mysql.sock
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/development.sqlite3
 
 test:
   <<: *default
