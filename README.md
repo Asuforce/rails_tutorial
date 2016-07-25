@@ -1,28 +1,32 @@
-== README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is asuforce's rails_tutorial.
+If you want to set up, you can see this README.
 
-Things you may want to cover:
+## Ruby version
 
-* Ruby version
+2.3.1
 
-* System dependencies
+## System dependencies
 
-* Configuration
+MySQL: 5.7.12
 
-* Database creation
+## Configuration
 
-* Database initialization
+1. Please fill in Env values(.env.example)
+2. `cp -p .env.example .env`
+3. `bundle install`
 
-* How to run the test suite
+## Database creation
 
-* Services (job queues, cache servers, search engines, etc.)
+`bundle exec rake db:create`
+`bundle exec rake db:migrate`
 
-* Deployment instructions
+## Database initialization
 
-* ...
+`bundle exec rake db:seed`
 
+## How to run the test suite
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+`bundle exec rake test`
+
