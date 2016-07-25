@@ -1,6 +1,6 @@
 # README
 
-This is asuforce's rails_tutorial.
+This is Asuforce's rails_tutorial.
 If you want to set up, you can see this README.
 
 ## Ruby version
@@ -9,11 +9,17 @@ If you want to set up, you can see this README.
 
 ## System dependencies
 
+### Development env
+
+sqlite3: 1.3.9
+
+### Test, Production env
+
 MySQL: 5.7.12
 
 ## Configuration
 
-1. Please fill in Env values(.env.example)
+1. Please set env values(.env.example)
 2. `cp -p .env.example .env`
 3. `bundle install`
 
