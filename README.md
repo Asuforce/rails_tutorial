@@ -19,14 +19,14 @@ MySQL: 5.7.12
 
 ## Configuration
 
-1. Please set env values(.env.example)
-2. `cp -p .env.example .env`
+1. `cp -p .env.example .env`
+2. Please set env values(.env)
 3. `bundle install`
 
 ## Database creation
 
-`bundle exec rake db:create`
-`bundle exec rake db:migrate`
+1. `bundle exec rake db:create`
+2. `bundle exec rake db:migrate`
 
 ## Database initialization
 
