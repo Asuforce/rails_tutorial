@@ -22,7 +22,6 @@ gem 'sqlite3', '1.3.9', group: :development
 group :development do
   gem 'capistrano', '3.6.1'
   gem 'capistrano-rails'
-  gem 'capistrano3-unicorn'
   gem 'net-ssh', '>=4.0.0.beta3'
   gem 'bcrypt_pbkdf'
   gem 'rbnacl-libsodium'
