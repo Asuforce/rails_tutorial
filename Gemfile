@@ -19,6 +19,14 @@ gem 'jbuilder', '2.2.3'
 gem 'sdoc', '0.4.0', group: :doc
 gem 'sqlite3', '1.3.9', group: :development
 
+group :development do
+  gem 'capistrano', '3.6.1'
+  gem 'capistrano-rails'
+  gem 'net-ssh', '>=4.0.0.beta3'
+  gem 'bcrypt_pbkdf'
+  gem 'rbnacl-libsodium'
+end
+
 group :development, :test do
   gem 'byebug', '3.4.0'
   gem 'web-console', '2.0.0.beta3'
