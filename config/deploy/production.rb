@@ -28,7 +28,7 @@ server "revproxy_b01",
   user: "revproxy",
   roles: :revproxy, no_release: true,
     ssh_options: {
-      keys: %w(~/.ssh/fitness.pem),
+      keys: %w(~/.ssh/id_ed25519),
       forward_agent: true,
       auth_methods: %w(publickey),
       proxy: Net::SSH::Proxy::Command.new('ssh -oStrictHostKeyChecking=no -i ~/.ssh/id_ed25519 revproxy@bastion.asuforce.xyz -W %h:%p')
