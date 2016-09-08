@@ -1,22 +1,25 @@
 default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-
-development:
   adapter: sqlite3
   pool: 5
   timeout: 5000
+
+development:
+  <<: *default
   database: db/development.sqlite3
 
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: skyline_test
-  socket: /tmp/mysql.sock
+  database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: skyline_production
-  socket: /var/run/mysqld/mysqld.sock
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  database: railstutorial_production
+  host: db
