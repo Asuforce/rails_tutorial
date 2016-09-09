@@ -5,6 +5,6 @@ end
 
 json.feeds do |json|
   json.array!(@microposts) do |micropost|
-    json.extract! micropost, :id, :content, :user_id
+    json.extract! micropost, :id, :content, :created_at
   end
 end

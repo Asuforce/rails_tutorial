@@ -40,7 +40,7 @@ class Api::UsersControllerTest < ActionController::TestCase
         id: @user.id, name: @user.name
       },
       feeds: feeds.map {|feed| {
-        id: feed[:id], content: feed[:content], user_id: feed[:user_id]
+        id: feed[:id], content: feed[:content], created_at: feed[:created_at]
       }}.ordered!
     }
     assert_json_match pattern, response.body
