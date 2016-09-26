@@ -65,7 +65,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = 'asuforce.xyz'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address => 'smtp.lolipop.jp',
     :port => '587',
