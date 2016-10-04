@@ -19,6 +19,7 @@ gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass',          '3.3.6'
 gem 'sdoc',                    '0.4.0', group: :doc
+gem 'web-console',             '3.1.1', group: :development
 gem 'rb-readline'
 
 group :development do
@@ -36,7 +37,6 @@ end
 
 group :development, :test do
   gem 'byebug',       '9.0.0', platform: :mri
-  gem 'web-console',  '3.1.1'
   gem 'spring',       '1.7.1'
   gem 'dotenv-rails', '2.1.1'
 end
@@ -49,8 +49,8 @@ group :test do
   gem 'rails-controller-testing', '0.1.1'
   gem 'minitest-reporters',       '1.1.9'
   gem 'mini_backtrace',           '0.1.3'
-  gem 'guard',                    '2.13.0'
-  gem 'guard-minitest',           '2.3.1'
+  gem 'guard',                    '2.14.0'
+  gem 'guard-minitest',           '2.4.6'
   gem 'json_expressions',         '0.8.3'
 end
 
