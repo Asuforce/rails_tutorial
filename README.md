@@ -1,35 +1,37 @@
-# Ruby on Rails Tutorial sample application
+# README
 
-This is the sample application for
-[*Ruby on Rails Tutorial:
-Learn Web Development with Rails*](http://www.railstutorial.org/)
-by [Michael Hartl](http://www.michaelhartl.com/).
+This is Asuforce's rails_tutorial.
+If you want to set up, you can see this README.
 
-## Getting started
+## Ruby version
 
-To get started with the app, clone the repo and then install the needed gems:
+2.3.1
 
-```
-$ bundle install --without production
-```
+## System dependencies
 
-Next, migrate the database:
+### Development env
 
-```
-$ rails db:migrate
-```
+sqlite3: 1.3.9
 
-Finally, run the test suite to verify that everything is working correctly:
+### Test, Production env
 
-```
-$ rails test
-```
+MySQL: 5.7.12
 
-If the test suite passes, you'll be ready to run the app in a local server:
+## Configuration
 
-```
-$ rails server
-```
+1. `cp -p .env.example .env`
+2. Please set env values(.env)
+3. `bundle install`
 
-For more information, see the
-[*Ruby on Rails Tutorial* book](http://www.railstutorial.org/book).
+## Database creation
+
+1. `bundle exec rake db:create`
+2. `bundle exec rake db:migrate`
+
+## Database initialization
+
+`bundle exec rake db:seed`
+
+## How to run the test suite
+
+`bundle exec rake test`

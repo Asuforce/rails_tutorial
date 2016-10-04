@@ -40,7 +40,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = false
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -61,15 +61,15 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'asuforcerails.herokuapp.com'
+  host = 'asuforce.xyz'
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   ActionMailer::Base.smtp_settings = {
     :address => 'smtp.lolipop.jp',
     :port => '587',
     :authentication => :plain,
-    :user_name => ENV['LOLIPOP_USERNAME'],
-    :password => ENV['LOLIPOP_PASSWORD'],
-    :domain => 'asuforce.xyz',
+    :user_name => Rails.application.secrets[:mail_account],
+    :password => Rails.application.secrets[:mail_password],
+    :domain => Rails.application.secrets[:mail_domain],
     :enable_starttls_auto => true
   }
 
