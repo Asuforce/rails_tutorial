@@ -35,4 +35,3 @@ MySQL: 5.7.12
 ## How to run the test suite
 
 `bundle exec rake test`
-

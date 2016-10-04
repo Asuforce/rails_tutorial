@@ -1,37 +1,43 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rails', '4.2.2'
-gem 'bcrypt', '3.1.7'
-gem 'faker', '1.4.2'
-gem 'carrierwave', '0.10.0'
-gem 'mini_magick', '3.8.0'
-gem 'carrierwave-aws', '1.0.1'
-gem 'will_paginate', '3.0.7'
+gem 'rails',                   '5.0.0.1'
+gem 'puma',                    '3.4.0'
+gem 'sass-rails',              '5.0.5'
+gem 'uglifier',                '3.0.0'
+gem 'coffee-rails',            '4.2.1'
+gem 'jquery-rails',            '4.1.1'
+gem 'turbolinks',              '5.0.0'
+gem 'jbuilder',                '2.4.1'
+
+gem 'bcrypt',                  '3.1.11'
+gem 'faker',                   '1.6.3'
+gem 'carrierwave',             '0.11.2'
+gem 'mini_magick',             '4.5.1'
+gem 'carrierwave-aws',         '1.0.1'
+gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
-gem 'bootstrap-sass', '3.2.0.0'
-gem 'sass-rails', '5.0.2'
-gem 'uglifier', '2.5.3'
-gem 'coffee-rails', '4.1.0'
-gem 'jquery-rails', '4.0.3'
-gem 'turbolinks', '2.3.0'
-gem 'jbuilder', '2.2.3'
-gem 'sdoc', '0.4.0', group: :doc
-gem 'sqlite3', '1.3.9', group: :development
+gem 'bootstrap-sass',          '3.3.6'
+gem 'sdoc',                    '0.4.0', group: :doc
+gem 'web-console',             '3.1.1', group: :development
 gem 'rb-readline'
 
 group :development do
-  gem 'capistrano', '3.6.1'
+  gem 'sqlite3',               '1.3.11'
+  gem 'web-console',           '3.1.1'
+  gem 'listen',                '3.0.7'
+  gem 'spring',                '1.7.1'
+  gem 'spring-watcher-listen', '2.0.0'
+  gem 'capistrano',            '3.6.1'
   gem 'capistrano-rails'
-  gem 'net-ssh', '>=4.0.0.beta3'
+  gem 'net-ssh',               '>=4.0.0.beta3'
   gem 'bcrypt_pbkdf'
   gem 'rbnacl-libsodium'
 end
 
 group :development, :test do
-  gem 'byebug', '3.4.0'
-  gem 'web-console', '2.0.0.beta3'
-  gem 'spring', '1.1.3'
+  gem 'byebug',       '9.0.0', platform: :mri
+  gem 'spring',       '1.7.1'
   gem 'dotenv-rails', '2.1.1'
 end
 
@@ -40,13 +46,15 @@ group :test, :production do
 end
 
 group :test do
-  gem 'minitest-reporters', '1.0.5'
-  gem 'mini_backtrace', '0.1.3'
-  gem 'guard-minitest', '2.3.1'
-  gem 'json_expressions', '0.8.3'
+  gem 'rails-controller-testing', '0.1.1'
+  gem 'minitest-reporters',       '1.1.9'
+  gem 'mini_backtrace',           '0.1.3'
+  gem 'guard',                    '2.14.0'
+  gem 'guard-minitest',           '2.4.6'
+  gem 'json_expressions',         '0.8.3'
 end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
-  gem 'unicorn', '5.1.0'
+  gem 'unicorn',        '5.1.0'
 end
