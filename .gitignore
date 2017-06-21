@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -14,13 +15,16 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
-/tmp
+/tmp/*
+!/tmp/.keep
 
 # Ignore Spring files.
 /spring/*.pid
 
 # Ignore uploaded test images.
 /public/uploads/
+/public/assets/
 
 # Ignore Env file.
 .env
+

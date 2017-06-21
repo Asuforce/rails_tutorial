@@ -36,11 +36,9 @@ class Api::UsersControllerTest < ActionController::TestCase
     feeds = @user.microposts.paginate(page: 1)
 
     pattern = {
-      user: {
-        id: @user.id, name: @user.name
-      },
       feeds: feeds.map {|feed| {
-        id: feed[:id], content: feed[:content], user_id: feed[:user_id]
+        user_id: @user.id, name: @user.name,
+        id: feed[:id], content: feed[:content], created_at: feed[:created_at]
       }}.ordered!
     }
     assert_json_match pattern, response.body
