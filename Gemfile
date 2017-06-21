@@ -23,6 +23,10 @@ group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
 end
 
+group :test, :production do
+  gem 'mysql2', '0.4.6'
+end
+
 group :development do
   gem 'web-console',           '3.5.1'
   gem 'listen',                '3.0.8'
