@@ -14,17 +14,17 @@ class Api::AuthenticationControllerTest < ActionController::TestCase
   end
 
   test "should fail create with non-activated user" do
-    post :create, format: :json, email: @non_activate_user , password: 'password'
+    post :create, params: {}, format: :json, email: @non_activate_user , password: 'password'
     assert_response :unprocessable_entity
   end
 
   test "should fail create with invalid password" do
-    post :create, format: :json, email: @user.email, password: ''
+    post :create, params: {}, format: :json, email: @user.email, password: ''
     assert_response :unprocessable_entity
   end
 
   test "should success create and correct json response" do
-    post :create, format: :json, email: @user.email, password: 'password'
+    post :create, params: {}, format: :json, email: @user.email, password: 'password'
     assert_response :success
 
     pattern = {

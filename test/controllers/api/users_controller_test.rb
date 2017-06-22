@@ -30,7 +30,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "should get show success responce and correct json response" do
     log_in_as(@user)
-    get :show, id: @user, format: :json
+    get :show, params: { id: @user }, format: :json
     assert_response :success
 
     feeds = @user.microposts.paginate(page: 1)
@@ -46,7 +46,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "invalid signup information" do
     assert_no_difference "User.count" do
-      post :create, format: :json,
+      post :create, params: { id: @user }, format: :json,
         user: {
           name: "",
           email: "user@invalid",
@@ -59,7 +59,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "valid signup information" do
     assert_difference "User.count", 1 do
-      post :create, format: :json,
+      post :create, params: {}, format: :json,
         user: {
           name: "Example User",
           email: "user@example.com",
@@ -73,7 +73,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "invalid user update" do
     log_in_as(@user)
-    patch :update, id: @user, format: :json,
+    patch :update, params: { id: @user }, format: :json,
       user: {
         name: "",
         email: "foo@invalid",
@@ -88,7 +88,7 @@ class Api::UsersControllerTest < ActionController::TestCase
     name = "Foo Bar"
     email = "foo@bar.com"
 
-    patch :update, id: @user, format: :json,
+    patch :update, params: { id: @user }, format: :json,
       user: {
         name: name,
         email: email,
@@ -103,7 +103,7 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "should fail destroy when not logged in" do
     assert_no_difference "User.count" do
-      delete :destroy, id: @user, format: :json
+      delete :destroy, params: { id: @user }, format: :json
     end
     assert_response :unauthorized
   end
@@ -111,7 +111,7 @@ class Api::UsersControllerTest < ActionController::TestCase
   test "should fail destroy when logged in as a non-admin" do
     log_in_as(@other_user)
     assert_no_difference "User.count" do
-      delete :destroy, id: @user, format: :json
+      delete :destroy, params: { id: @user }, format: :json
     end
     assert_response :bad_request
   end
@@ -119,19 +119,19 @@ class Api::UsersControllerTest < ActionController::TestCase
   test "should success destroy" do
     log_in_as(@user)
     assert_difference "User.count", -1 do
-      delete :destroy, id: @other_user, format: :json
+      delete :destroy, params: { id: @other_user }, format: :json
     end
     assert_response :ok
   end
 
   test "should not get following success responce" do
-    get :following, id: @user, format: :json
+    get :following, params: { id: @user }, format: :json
     assert_response :unauthorized
   end
 
   test "should get following success responce" do
     log_in_as(@user)
-    get :following, id: @user, format: :json
+    get :following, params: { id: @user }, format: :json
     assert_response :ok
 
     followings = @user.following.paginate(page: 1)
@@ -148,13 +148,13 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should not get followers success responce" do
-    get :followers, id: @user, format: :json
+    get :followers, params: { id: @user }, format: :json
     assert_response :unauthorized
   end
 
   test "should get followers success responce" do
     log_in_as(@user)
-    get :followers, id: @user, format: :json
+    get :followers, params: { id: @user }, format: :json
     assert_response :ok
 
     followers = @user.followers.paginate(page: 1)
