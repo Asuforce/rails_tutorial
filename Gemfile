@@ -1,26 +1,26 @@
 source 'https://rubygems.org'
 
-gem 'rails',                   '5.0.3'
-gem 'bcrypt',                  '3.1.11'
-gem 'faker',                   '1.7.3'
-gem 'will_paginate',           '3.1.5'
-gem 'bootstrap-will_paginate', '1.0.0'
-gem 'bootstrap-sass',          '3.3.7'
-gem 'sass-rails',              '5.0.6'
-gem 'uglifier',                '3.2.0'
-gem 'coffee-rails',            '4.2.2'
-gem 'jquery-rails',            '4.3.1'
-gem 'turbolinks',              '5.0.1'
-gem 'jbuilder',                '2.6.1'
-gem 'sdoc',                    '0.4.0', group: :doc
-gem 'jwt',                     '1.5.4'
-gem 'carrierwave',             '1.1.0'
-gem 'mini_magick',             '4.7.0'
-gem 'carrierwave-aws',         '1.1.0'
+gem 'rails'
+gem 'bcrypt'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder'
+gem 'jwt'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave-aws'
+gem 'sdoc', group: :doc
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
-  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'sqlite3'
+  gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
@@ -28,28 +28,28 @@ group :development, :test do
 end
 
 group :test, :production do
-  gem 'mysql2', '0.4.6'
+  gem 'mysql2'
 end
 
 group :development do
-  gem 'web-console',           '3.5.1'
-  gem 'listen',                '3.0.8'
-  gem 'spring',                '2.0.2'
-  gem 'spring-watcher-listen', '2.0.1'
+  gem 'web-console'
+  gem 'listen'
+  gem 'spring'
+  gem 'spring-watcher-listen'
 end
 
 group :test do
-  gem 'rails-controller-testing', '1.0.2'
-  gem 'minitest-reporters',       '1.1.14'
-  gem 'mini_backtrace',           '0.1.3'
-  gem 'guard',                    '2.14.1'
-  gem 'guard-minitest',           '2.4.6'
-  gem 'json_expressions',         '0.9.0'
-  gem 'timecop',                  '0.8.0'
+  gem 'rails-controller-testing'
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'json_expressions'
+  gem 'timecop'
 end
 
 group :production do
-  gem 'pg',             '0.20.0'
-  gem 'rails_12factor', '0.0.2'
-  gem 'puma',           '3.1.0'
+  gem 'pg'
+  gem 'rails_12factor'
+  gem 'puma'
 end

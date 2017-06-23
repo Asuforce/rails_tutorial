@@ -33,7 +33,7 @@ class Api::UsersController < Api::ApplicationController
 
   def destroy
     User.find_by(id: params[:id]).try(:destroy)
-    render nothing: :true, status: :ok
+    render body: nil, status: :ok
   end
 
   def following
@@ -58,16 +58,16 @@ class Api::UsersController < Api::ApplicationController
 
     def correct_user
       @user = current_user
-      render nothing: :true, status: :bad_request unless current_user?(@user)
+      render body: nil, status: :bad_request unless current_user?(@user)
     end
 
     def admin_user
-      render nothing: :true, status: :bad_request unless current_user.admin?
+      render body: nil, status: :bad_request unless current_user.admin?
     end
 
     def auth_user
       auth_header = request.authorization
-      render nothing: true, status: :unauthorized and return if auth_header.nil?
+      render body: nil, status: :unauthorized and return if auth_header.nil?
 
       token = auth_header.split(" ").last
       key = Rails.application.secrets[:secret_key_base]
@@ -78,8 +78,8 @@ class Api::UsersController < Api::ApplicationController
         return false
       rescue JWT::InvalidIssuerError
         return false
+      else
+        return false
       end
-    else
-      return false
     end
 end
