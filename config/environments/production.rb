@@ -61,16 +61,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'asuforce.xyz'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  host = 'orpheus-2017.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.lolipop.jp',
-    :port => '587',
-    :authentication => :plain,
-    :user_name => Rails.application.secrets[:mail_account],
-    :password => Rails.application.secrets[:mail_password],
-    :domain => Rails.application.secrets[:mail_domain],
-    :enable_starttls_auto => true
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'heroku.com',
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
