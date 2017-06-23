@@ -28,6 +28,11 @@ class ActiveSupport::TestCase
     end
   end
 
+  def set_headers(user)
+    token = user.create_jwt
+    @request.headers["Authorization"] = "Bearer #{token}"
+  end
+
   private
 
     def integration_test?
