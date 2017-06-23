@@ -21,6 +21,8 @@ Rails.application.routes.draw do
         get :following, :followers
       end
     end
+    post 'login' => 'authentication#create'
+    delete 'logout' => 'authentication#destroy'
   end
 
   resources :account_activations, only: [:edit]

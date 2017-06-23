@@ -21,6 +21,10 @@ gem 'carrierwave-aws',         '1.1.0'
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
 end
 
 group :test, :production do
@@ -37,9 +41,11 @@ end
 group :test do
   gem 'rails-controller-testing', '1.0.2'
   gem 'minitest-reporters',       '1.1.14'
+  gem 'mini_backtrace',           '0.1.3'
   gem 'guard',                    '2.14.1'
   gem 'guard-minitest',           '2.4.6'
   gem 'json_expressions',         '0.9.0'
+  gem 'timecop',                  '0.8.0'
 end
 
 group :production do
