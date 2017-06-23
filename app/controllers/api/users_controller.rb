@@ -66,8 +66,10 @@ class Api::UsersController < Api::ApplicationController
     end
 
     def auth_user
-      token = headers.authorization
-      token = token.split(" ").last
+      auth_header = request.authorization
+      render nothing: true, status: :unauthorized and return if auth_header.nil?
+
+      token = auth_header.split(" ").last
       key = Rails.application.secrets[:secret_key_base]
 
       begin
