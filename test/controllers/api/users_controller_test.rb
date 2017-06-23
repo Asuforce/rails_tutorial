@@ -14,7 +14,7 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get index succress responce and correct json response" do
-    log_in_as(@user)
+    set_headers(@user)
     get :index, format: :json
     assert_response :success
 
@@ -29,7 +29,7 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show success responce and correct json response" do
-    log_in_as(@user)
+    set_headers(@user)
     get :show, params: { id: @user }, format: :json
     assert_response :success
 
@@ -46,25 +46,17 @@ class Api::UsersControllerTest < ActionController::TestCase
 
   test "invalid signup information" do
     assert_no_difference "User.count" do
-      post :create, params: { id: @user }, format: :json,
-        user: {
-          name: "",
-          email: "user@invalid",
-          password: "foo",
-          password_confirmation: "bar"
-        }
+      post :create, format: :json, params: {
+        user: { name: "",email: "user@invalid", password: "foo", password_confirmation: "bar" }
+      }
     end
     assert_response :unprocessable_entity
   end
 
   test "valid signup information" do
     assert_difference "User.count", 1 do
-      post :create, params: {}, format: :json,
-        user: {
-          name: "Example User",
-          email: "user@example.com",
-          password: "password",
-          password_confirmation: "password"
+      post :create, format: :json, params: { user:
+        { name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password" }
       }
     end
     assert_response :created
@@ -72,29 +64,21 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "invalid user update" do
-    log_in_as(@user)
-    patch :update, params: { id: @user }, format: :json,
-      user: {
-        name: "",
-        email: "foo@invalid",
-        password: "foo",
-        password_confirmation: "bar"
-      }
+    set_headers(@user)
+    patch :update, format: :json, params: { id: @user,  user:
+      { name: "", email: "foo@invalid", password: "foo", password_confirmation: "bar" }
+    }
     assert_response :unprocessable_entity
   end
 
   test "valid user update" do
-    log_in_as(@user)
+    set_headers(@user)
     name = "Foo Bar"
     email = "foo@bar.com"
 
-    patch :update, params: { id: @user }, format: :json,
-      user: {
-        name: name,
-        email: email,
-        password: "",
-        password_confirmation: ""
-      }
+    patch :update, format: :json, params: { id: @user, user:
+      { name: name, email: email, password: "", password_confirmation: "" }
+    }
     @user.reload
     assert_equal name, @user.name
     assert_equal email, @user.email
@@ -109,17 +93,17 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should fail destroy when logged in as a non-admin" do
-    log_in_as(@other_user)
+    set_headers(@other_user)
     assert_no_difference "User.count" do
-      delete :destroy, params: { id: @user }, format: :json
+      delete :destroy, params: { id: @other_user }, format: :json
     end
     assert_response :bad_request
   end
 
   test "should success destroy" do
-    log_in_as(@user)
+    set_headers(@user)
     assert_difference "User.count", -1 do
-      delete :destroy, params: { id: @other_user }, format: :json
+      delete :destroy, params: { id: @user }, format: :json
     end
     assert_response :ok
   end
@@ -130,7 +114,7 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get following success responce" do
-    log_in_as(@user)
+    set_headers(@user)
     get :following, params: { id: @user }, format: :json
     assert_response :ok
 
@@ -153,8 +137,8 @@ class Api::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get followers success responce" do
-    log_in_as(@user)
-    get :followers, params: { id: @user }, format: :json
+    set_headers(@user)
+    get :followers, params: { id: @user }, format: :son
     assert_response :ok
 
     followers = @user.followers.paginate(page: 1)
