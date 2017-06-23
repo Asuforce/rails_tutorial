@@ -6,10 +6,10 @@ class Api::AuthenticationController < Api::ApplicationController
       if @user.activated?
         render status: :created
       else
-        render json: @user.errors.messages, status: :unprocessable_entity
+        render json: @user, status: :unprocessable_entity
       end
     else
-      render json: @user.errors.messages, status: :unprocessable_entity
+      render json: @user, status: :unprocessable_entity
     end
   end
 end
