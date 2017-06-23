@@ -78,8 +78,8 @@ class Api::UsersController < Api::ApplicationController
         return false
       rescue JWT::InvalidIssuerError
         return false
+      else
+        return false
       end
-    else
-      return false
     end
 end
