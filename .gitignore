@@ -28,3 +28,5 @@
 # Ignore Env file.
 .env
 
+/public/packs
+/node_modules
