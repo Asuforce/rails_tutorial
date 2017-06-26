@@ -1,0 +1,37 @@
+header
+  .container
+    nav.navbar.navbar-fixed-top.navbar-inverse
+      = link_to "Orpheus", root_path, id: "logo"
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"]
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              = link_to "Home", root_path
+            li
+              = link_to "Help", help_path
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                | Menu 
+                span.caret
+              ul.dropdown-menu
+                - if logged_in?
+                  li
+                    = link_to "Users", users_path
+                  li
+                    = link_to "Profile", current_user
+                  li
+                    = link_to "Settings", edit_user_path(current_user)
+                  li.divider
+                  li
+                    = link_to "Log out", logout_path, method: "delete"
+                - else
+                  li
+                    = link_to "Log in", login_path
