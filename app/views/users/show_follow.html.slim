@@ -10,7 +10,7 @@
           | Microposts:
         = @user.microposts.count
     section.stats
-      = render 'shared/stats'
+      == render 'shared/stats'
       - if @users.any?
         .user_avatars
           - @users.each do |user|
@@ -20,4 +20,4 @@
       = @title
     - if @users.any?
       ul.users.follow
-        = render @users
+        == render @users

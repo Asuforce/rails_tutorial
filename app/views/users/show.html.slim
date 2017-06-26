@@ -6,14 +6,14 @@
         = gravatar_for @user
         = @user.name
     section.stats
-      = render 'shared/stats'
+      == render 'shared/stats'
   .col-md-8
-    = render 'follow_form' if logged_in?
+    == render 'follow_form' if logged_in?
     - if @user.microposts.any?
       h3
         | Microposts (
         = @user.microposts.count
         | )
       ol.microposts
-        = render @microposts
+        == render @microposts
       = will_paginate @microposts
