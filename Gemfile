@@ -17,7 +17,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-aws'
 gem 'sdoc', group: :doc
-gem 'webpacker'
 
 group :development, :test do
   gem 'sqlite3'
