@@ -3,7 +3,7 @@ rvm:
 - 2.4.1
 services:
 - mysql
-bundler_args: "--without development --deployment"
+bundler_args: "--without development --deployment -j4"
 cache: bundler
 before_script:
 - mysql -e 'create database travis_ci_test;'
