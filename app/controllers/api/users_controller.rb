@@ -37,17 +37,17 @@ class Api::UsersController < Api::ApplicationController
   end
 
   def following
-    @title = "Following"
+    @title = 'Following'
     @user = current_user
     @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    render template: 'api/users/show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = 'Followers'
     @user = current_user
     @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    render template: 'api/users/show_follow'
   end
 
   private
