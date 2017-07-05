@@ -38,6 +38,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'spring-watcher-listen'
+  gem 'thin'
 end
 
 group :test do
