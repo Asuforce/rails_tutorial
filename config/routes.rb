@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, { format: 'json' } do
+    match '*path' => 'application#preflight', via: :options
     resources :users, only: [:index, :show, :create, :update, :destroy] do
       member do
         get :following, :followers
